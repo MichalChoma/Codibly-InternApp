@@ -17,7 +17,9 @@ const Pagination = () => {
       >
         previous page
       </ThemeButton>
-      <p className="px-4">{page}</p>
+      <p className="px-4" aria-label="page-count">
+        {page}
+      </p>
       <ThemeButton
         onClick={() => {
           setPage((prevState) => {

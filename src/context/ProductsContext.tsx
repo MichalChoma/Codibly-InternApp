@@ -20,17 +20,20 @@ export type ProductListItemType = Pick<
   "id" | "name" | "color" | "year"
 >;
 
-export const ProductsContext = createContext<{
+export interface ProductContextType {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
   id: number | string;
   setId: Dispatch<SetStateAction<string | number>>;
   isLoading: boolean;
+  isSuccess: boolean;
   isError: boolean;
   products: ProductItemType[] | ProductItemType | [];
   totalPages: number;
   error: unknown;
-} | null>(null);
+}
+
+export const ProductsContext = createContext<ProductContextType | null>(null);
 
 export const ProductsContextProvider = ({
   children,
@@ -49,7 +52,7 @@ export const ProductsContextProvider = ({
       `https://reqres.in/api/products?page=${page}&per_page=${perPage}&id=${id}`
     ).then((res) => res.json());
 
-  const { isLoading, isError, data, error } = useQuery({
+  const { isLoading, isError, data, error, isSuccess } = useQuery({
     queryKey: ["products", page, id, perPage],
     queryFn: () => fetchProducts(page, perPage, id),
   });
@@ -71,6 +74,7 @@ export const ProductsContextProvider = ({
         page,
         error,
         setPage,
+        isSuccess,
         totalPages,
         id,
         setId,

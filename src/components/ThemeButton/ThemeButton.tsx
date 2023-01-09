@@ -12,6 +12,7 @@ const ThemeButton = ({ children, onClick, disabled }: ThemeButtonProps) => {
     <motion.button
       className={`bg-gray-200 p-2 hover:bg-gray-300 cursor-pointer text-sm dark:bg-neutral-600 dark:hover:bg-neutral-700 dark:text-white rounded-lg`}
       onClick={onClick}
+      role="themeButton"
       whileTap={{
         scale: 0.9,
       }}

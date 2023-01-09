@@ -12,7 +12,9 @@ const ProductListItem = ({ id, name, color, year }: ProductListItemType) => {
         handleShowModal();
       }}
     >
-      <div>{id}</div>
+      <div aria-label="apiItemId" role={`apiItem-${id}`}>
+        {id}
+      </div>
       <div>{name}</div>
       <div>{year}</div>
     </GridRow>
