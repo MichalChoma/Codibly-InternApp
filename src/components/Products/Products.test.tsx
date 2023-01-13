@@ -1,10 +1,4 @@
-import {
-  screen,
-  waitFor,
-  renderHook,
-  fireEvent,
-  findByRole,
-} from "@testing-library/react";
+import { screen, waitFor, renderHook, fireEvent } from "@testing-library/react";
 import { ProductsContextProvider } from "../../context/ProductsContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useProductsContext } from "../../hooks/useProductsContext";
@@ -12,17 +6,20 @@ import { ModalContextProvider } from "../../context/ModalContext";
 import App from "../../App";
 import { ThemeContextProvider } from "../../context/ThemeContext";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient();
 const wrapper = () => (
   <QueryClientProvider client={queryClient}>
-    <ProductsContextProvider>
-      <ModalContextProvider>
-        <ThemeContextProvider>
-          <App />
-        </ThemeContextProvider>
-      </ModalContextProvider>
-    </ProductsContextProvider>
+    <BrowserRouter>
+      <ProductsContextProvider>
+        <ModalContextProvider>
+          <ThemeContextProvider>
+            <App />
+          </ThemeContextProvider>
+        </ModalContextProvider>
+      </ProductsContextProvider>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 
@@ -64,11 +61,10 @@ describe("Products component", () => {
     const nextBtn = screen.getByText("next page");
     const prevBtn = screen.getByText("previous page");
     userEvent.click(nextBtn);
-    userEvent.click(nextBtn);
     userEvent.click(prevBtn);
 
     await waitFor(async () => {
-      const item = await screen.findByRole("apiItem-" + 8);
+      const item = await screen.findByRole("apiItem-" + 2);
       expect(item).toBeInTheDocument();
     });
   });

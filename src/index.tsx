@@ -7,6 +7,7 @@ import { ThemeContextProvider } from "./context/ThemeContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ProductsContextProvider } from "./context/ProductsContext";
 import { ModalContextProvider } from "./context/ModalContext";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -16,13 +17,15 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ProductsContextProvider>
-        <ModalContextProvider>
-          <ThemeContextProvider>
-            <App />
-          </ThemeContextProvider>
-        </ModalContextProvider>
-      </ProductsContextProvider>
+      <BrowserRouter>
+        <ProductsContextProvider>
+          <ModalContextProvider>
+            <ThemeContextProvider>
+              <App />
+            </ThemeContextProvider>
+          </ModalContextProvider>
+        </ProductsContextProvider>
+      </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>
 );

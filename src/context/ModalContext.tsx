@@ -20,7 +20,7 @@ export const ModalContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const [selectProductId, setSelectProductId] = useState(0);
+  const [selectProductId, setSelectProductId] = useState(1);
   const [product, setProduct] = useState<ProductItemType | null>(null);
 
   const handleShowModal = () => setShowModal((prevState) => !prevState);

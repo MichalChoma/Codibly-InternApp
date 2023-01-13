@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useQuery } from "react-query";
 
 export interface ProductItemType {
@@ -40,20 +41,29 @@ export const ProductsContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [page, setPage] = useState<number>(1);
+  const [searchParams] = useSearchParams();
+  const pageURL = searchParams.get("page");
+  const idURL = searchParams.get("id");
+
+  const [page, setPage] = useState<number>(pageURL ? +pageURL : 1);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [id, setId] = useState<string | number>("");
+  const [id, setId] = useState<string | number>(idURL ? idURL : "");
   const [products, setProducts] = useState<
     ProductItemType[] | ProductItemType | []
   >([]);
   const perPage = 5;
-  const fetchProducts = (page: number, perPage: number, id: number | string) =>
+
+  const fetchProducts = (
+    page: number | string,
+    perPage: number,
+    id: number | string
+  ) =>
     fetch(
       `https://reqres.in/api/products?page=${page}&per_page=${perPage}&id=${id}`
     ).then((res) => res.json());
 
   const { isLoading, isError, data, error, isSuccess } = useQuery({
-    queryKey: ["products", page, id, perPage],
+    queryKey: ["products", page, id, totalPages],
     queryFn: () => fetchProducts(page, perPage, id),
   });
 
