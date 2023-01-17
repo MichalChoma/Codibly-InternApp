@@ -44,17 +44,6 @@ describe("Products component", () => {
     });
   });
 
-  it("show filtered data", async () => {
-    const { result } = renderHook(() => useProductsContext(), { wrapper });
-
-    const input = screen.getByPlaceholderText("Find by id");
-    fireEvent.change(input, { target: { value: 2 } });
-    await waitFor(() => {
-      const item = screen.getByRole("apiItem-" + 2);
-      expect(item).toBeInTheDocument();
-    });
-  });
-
   it("pagination - show item from second page", async () => {
     const { result } = renderHook(() => useProductsContext(), { wrapper });
 
@@ -65,6 +54,16 @@ describe("Products component", () => {
 
     await waitFor(async () => {
       const item = await screen.findByRole("apiItem-" + 2);
+      expect(item).toBeInTheDocument();
+    });
+  });
+
+  it("show filtered data", async () => {
+    const { result } = renderHook(() => useProductsContext(), { wrapper });
+    const input = screen.getByPlaceholderText("Find by id");
+    fireEvent.change(input, { target: { value: 2 } });
+    await waitFor(() => {
+      const item = screen.getByRole("apiItem-" + 2);
       expect(item).toBeInTheDocument();
     });
   });

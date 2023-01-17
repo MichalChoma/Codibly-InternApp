@@ -63,7 +63,7 @@ export const ProductsContextProvider = ({
     ).then((res) => res.json());
 
   const { isLoading, isError, data, error, isSuccess } = useQuery({
-    queryKey: ["products", page, id, totalPages],
+    queryKey: ["products", page, id],
     queryFn: () => fetchProducts(page, perPage, id),
   });
 
