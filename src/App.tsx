@@ -5,7 +5,7 @@ import { useThemeContext } from "./hooks/useThemeContext";
 function App() {
   const { isDark } = useThemeContext();
   return (
-    <div className={`flex min-h-screen flex-col ${isDark ? "dark" : null}`}>
+    <div className={`flex min-h-screen flex-col ${isDark ? "dark" : ""}`}>
       <Header />
       <Main />
     </div>
