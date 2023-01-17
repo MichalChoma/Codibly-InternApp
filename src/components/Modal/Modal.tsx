@@ -36,9 +36,7 @@ const Modal = () => {
         >
           <div
             className="relative z-10 w-full h-full"
-            onClick={() => {
-              handleShowModal();
-            }}
+            onClick={handleShowModal}
           ></div>
           <motion.div
             variants={modal}
