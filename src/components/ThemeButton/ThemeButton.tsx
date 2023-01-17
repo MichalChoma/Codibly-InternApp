@@ -10,7 +10,7 @@ interface ThemeButtonProps {
 const ThemeButton = ({ children, onClick, disabled }: ThemeButtonProps) => {
   return (
     <motion.button
-      className={`bg-gray-200 p-2 hover:bg-gray-300 cursor-pointer text-sm dark:bg-neutral-600 dark:hover:bg-neutral-700 dark:text-white rounded-lg`}
+      className="bg-gray-200 p-2 hover:bg-gray-300 cursor-pointer text-sm dark:bg-neutral-600 dark:hover:bg-neutral-700 dark:text-white rounded-lg transition-colors"
       onClick={onClick}
       role="themeButton"
       whileTap={{

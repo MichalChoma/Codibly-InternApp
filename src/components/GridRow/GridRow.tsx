@@ -9,7 +9,7 @@ interface GridRowType {
 const GridRow = ({ children, style, onClick }: GridRowType) => {
   return (
     <div
-      className="col-span-3 grid grid-cols-3 grid-rows-1 p-1 divide-x divide-slate-50"
+      className="col-span-3 grid grid-cols-3 grid-rows-1 p-1 divide-x divide-slate-50 hover:opacity-80 transition-opacity"
       style={style}
       onClick={onClick}
     >
