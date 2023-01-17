@@ -11,21 +11,15 @@ const ProductFilter = () => {
     setId(e.target.value);
     if (e.target.value.length === 0) {
       searchParams.delete("id");
-      setSearchParams(searchParams, {
-        replace: true,
-      });
     } else {
       searchParams.set("id", e.target.value);
-      setSearchParams(searchParams, {
-        replace: true,
-      });
     }
+    setSearchParams(searchParams, {
+      replace: true,
+    });
   };
   return (
-    <form
-      className="flex items-center w-full lg:justify-center"
-      onSubmit={(e) => e.preventDefault()}
-    >
+    <div className="flex items-center w-full lg:justify-center">
       <div className="flex w-full lg:w-72 rounded-lg overflow-hidden shadow-md">
         <div className="p-2 bg-white dark:bg-neutral-600">
           <BsSearch />
@@ -39,7 +33,7 @@ const ProductFilter = () => {
           onChange={handleIdChange}
         />
       </div>
-    </form>
+    </div>
   );
 };
 
