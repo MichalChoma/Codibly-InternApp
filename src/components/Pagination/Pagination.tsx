@@ -5,6 +5,8 @@ import ThemeButton from "../ThemeButton/ThemeButton";
 const Pagination = () => {
   const { page, setPage, totalPages } = useProductsContext();
   const [searchParams, setSearchParams] = useSearchParams();
+  const id = searchParams.get("id");
+
   const handlePrevPage = () => {
     setPage((prevState) => {
       if (prevState === 1) {
@@ -39,13 +41,17 @@ const Pagination = () => {
     });
   };
   return (
-    <div className="flex flex-row items-center p-2 justify-center">
-      <ThemeButton onClick={handlePrevPage}>previous page</ThemeButton>
-      <p className="px-4" aria-label="page-count">
-        {page}
-      </p>
-      <ThemeButton onClick={handleNextPage}>next page</ThemeButton>
-    </div>
+    <>
+      {id ? null : (
+        <div className="flex flex-row items-center p-2 justify-center">
+          <ThemeButton onClick={handlePrevPage}>previous page</ThemeButton>
+          <p className="px-4" aria-label="page-count">
+            {page}
+          </p>
+          <ThemeButton onClick={handleNextPage}>next page</ThemeButton>
+        </div>
+      )}
+    </>
   );
 };
 
