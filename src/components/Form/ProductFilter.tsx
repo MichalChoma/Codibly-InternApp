@@ -21,14 +21,14 @@ const ProductFilter = () => {
   return (
     <div className="flex items-center w-full lg:justify-center">
       <div className="flex w-full lg:w-72 rounded-lg overflow-hidden shadow-md">
-        <div className="p-2 bg-white dark:bg-neutral-600">
+        <div className="p-2 bg-white dark:bg-neutral-600 flex items-center">
           <BsSearch />
         </div>
         <input
           type="number"
           min={1}
           defaultValue={idURL ? idURL : ""}
-          className="pr-2 py-1 dark:bg-neutral-600 dark:text-white focus:outline-none w-full"
+          className="pr-2 py-1 dark:bg-neutral-600 dark:text-white focus:outline-none w-full appearance-none"
           placeholder="Find by id"
           onChange={handleIdChange}
         />

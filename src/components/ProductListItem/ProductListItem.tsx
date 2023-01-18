@@ -15,7 +15,7 @@ const ProductListItem = ({ id, name, color, year }: ProductListItemType) => {
       <div aria-label="apiItemId" role={`apiItem-${id}`}>
         {id}
       </div>
-      <div>{name}</div>
+      <div className="px-1">{name}</div>
       <div>{year}</div>
     </GridRow>
   );
