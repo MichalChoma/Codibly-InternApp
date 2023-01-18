@@ -28,7 +28,11 @@ const ProductFilter = () => {
           type="number"
           min={1}
           defaultValue={idURL ? idURL : ""}
-          className="pr-2 py-1 dark:bg-neutral-600 dark:text-white focus:outline-none w-full appearance-none"
+          className="pr-2 py-1 dark:bg-neutral-600 dark:text-white focus:outline-none w-full appearance-none rounded-tl-none rounded-bl-none"
+          style={{
+            WebkitAppearance: "none",
+            WebkitBorderRadius: 0,
+          }}
           placeholder="Find by id"
           onChange={handleIdChange}
         />
